@@ -12,7 +12,7 @@ on:
       TARGET_NAME:
         description: 'name of the FaaS-specific image to build'
         required: true
-        default: 'faasr-lambda-py'
+        default: 'aws-lambda-py'
       FAASR_VERSION:
         description: 'FaaSr version'
         required: true 
