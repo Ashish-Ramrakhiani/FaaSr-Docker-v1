@@ -9,27 +9,27 @@ ARG FAASR_VERSION
 ARG FAASR_INSTALL_REPO
 
 # Install FaaSr from specified repo and tag
-RUN sleep 10
+RUN sleep 1
 RUN Rscript -e "args <- commandArgs(trailingOnly=TRUE); library(devtools); install_github(paste0(args[1],'@',args[2]),force=TRUE)" $FAASR_INSTALL_REPO $FAASR_VERSION
 
 # Install FLARE-specific packages
-RUN sleep 10  
-RUN Rscript -e "library(remotes); install_github('FLARE-forecast/FLAREr', dependencies = TRUE)"
+RUN sleep 1
+RUN Rscript -e "library(remotes); install_github('FLARE-forecast/FLAREr@v3.1-dev', dependencies = TRUE)"
 
-RUN sleep 10
+RUN sleep 1
 RUN Rscript -e "library(remotes); install_github('rqthomas/GLM3r')"
 
 # Set GLM environment variable
 ENV GLM_PATH=GLM3r
 
 # Install supporting forecast packages
-RUN sleep 10
+RUN sleep 1
 RUN Rscript -e "library(remotes); install_github('eco4cast/neon4cast')"
 
-RUN sleep 10
+RUN sleep 1
 RUN Rscript -e "library(remotes); install_github('eco4cast/score4cast')"
 
-RUN sleep 10
+RUN sleep 1
 RUN Rscript -e "library(remotes); install_github('eco4cast/read4cast')"
 
 # Create the action directory
