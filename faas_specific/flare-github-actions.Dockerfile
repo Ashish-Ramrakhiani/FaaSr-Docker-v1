@@ -35,9 +35,9 @@ RUN Rscript -e "library(remotes); install_github('eco4cast/read4cast')"
 # Create the action directory
 RUN mkdir -p /action
 
-ADD https://github.com/FaaSr/FaaSr-package/blob/main/schema/FaaSr.schema.json /action/
-ADD https://github.com/Ashish-Ramrakhiani/FaaSr-Docker-v1/blob/main/base/faasr_start_invoke_helper.R /action/
-ADD https://github.com/Ashish-Ramrakhiani/FaaSr-Docker-v1/blob/main/base/faasr_start_invoke_github-actions.R /action/
+ADD https://raw.githubusercontent.com/FaaSr/FaaSr-package/main/schema/FaaSr.schema.json /action/
+ADD https://raw.githubusercontent.com/Ashish-Ramrakhiani/FaaSr-Docker-v1/main/base/faasr_start_invoke_helper.R /action/
+ADD https://raw.githubusercontent.com/Ashish-Ramrakhiani/FaaSr-Docker-v1/main/base/faasr_start_invoke_github-actions.R /action/
 
 # GitHub Actions specifics
 WORKDIR /action
