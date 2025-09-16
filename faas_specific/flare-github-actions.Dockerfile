@@ -14,7 +14,7 @@ RUN Rscript -e "args <- commandArgs(trailingOnly=TRUE); library(devtools); insta
 
 # Install FLARE-specific packages
 RUN sleep 1
-RUN Rscript -e "library(remotes); install_github('FLARE-forecast/FLAREr@v3.1-dev', dependencies = TRUE)"
+RUN Rscript -e "library(remotes); install_github('Ashish-Ramrakhiani/FLAREr@v3.1-dev', dependencies = TRUE)"
 
 RUN sleep 1
 RUN Rscript -e "library(remotes); install_github('rqthomas/GLM3r')"
