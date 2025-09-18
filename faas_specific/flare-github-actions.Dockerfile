@@ -9,7 +9,7 @@ ARG FAASR_VERSION
 ARG FAASR_INSTALL_REPO
 
 # Copy package list and install missing CRAN packages
-COPY base/flare_packages.txt /tmp/required_packages.txt
+COPY flare_packages.txt /tmp/required_packages.txt
 RUN Rscript -e "packages <- readLines('/tmp/required_packages.txt'); cat('Installing', length(packages), 'packages...\n'); install.packages(packages, dependencies = TRUE); cat('Package installation complete.\n')"
 
 # Install FaaSr from specified repo and tag
