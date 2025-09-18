@@ -8,6 +8,14 @@ ARG FAASR_VERSION
 # FAASR_INSTALL_REPO is the name of the user's GitHub repository to install FaaSr from e.g. faasr/FaaSr-package
 ARG FAASR_INSTALL_REPO
 
+COPY base/flare_packages.txt /tmp/required_packages.txt
+RUN Rscript -e "
+    packages <- readLines('/tmp/required_packages.txt')
+    cat('Installing', length(packages), 'packages...\n')
+    install.packages(packages, dependencies = TRUE)
+    cat('Package installation complete.\n')
+"
+
 # Install FaaSr from specified repo and tag
 RUN sleep 1
 RUN Rscript -e "args <- commandArgs(trailingOnly=TRUE); library(devtools); install_github(paste0(args[1],'@',args[2]),force=TRUE)" $FAASR_INSTALL_REPO $FAASR_VERSION
